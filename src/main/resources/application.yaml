@@ -5,6 +5,8 @@ spring:
     active: default # use profile native if you want to use custom properties at classpath
     config:
       enabled: ${SPRING_CLOUD_CONFIG_ENABLED:true}
+      import-check:
+        enabled: ${SPRING_CLOUD_CONFIG_IMPORT_CHECK_ENABLED:false}
       server:
         git:
           # required, repo to fetch all properties
