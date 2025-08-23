@@ -9,3 +9,8 @@ Spring Cloud Config Server is a centralized service for managing external config
 Reference:
 [Link to Sonarqube](https://qsonar.starlord443.dev/dashboard?id=marcoshssilva-spring-configserver)
 
+# Releases
+
+[Maven - Link](https://nxr.starlord443.dev/#browse/search/maven/=attributes.maven2.groupId%3Dbr.com.marcoshssilva%20AND%20attributes.maven2.artifactId%3Dspring-configserver)
+
+[Docker Images - Link](https://nxr.starlord443.dev/#browse/search/docker/=attributes.docker.imageName%3Dmarcoshssilva%2Fspring-configserver)
