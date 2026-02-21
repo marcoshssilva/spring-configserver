@@ -33,3 +33,15 @@ management:
     jmx:
       exposure:
         include: ${MANAGEMENT_ENDPOINTS_JMX_EXPOSURE_INCLUDE:*}
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 30
+    health-check-url-path: /actuator/health
+    preferIpAddress: ${EUREKA_INSTANCE_PREFER_IP_ADDRESS:false}
+  client:
+    enabled: ${EUREKA_CLIENT_ENABLED:false}
+    registryFetchIntervalSeconds: ${EUREKA_CLIENT_FETCH_REGISTRY_INTERVAL_SECONDS:30}
+    register-with-eureka: ${EUREKA_CLIENT_REGISTER_WITH_EUREKA:false}
+    fetch-registry: ${EUREKA_CLIENT_FETCH_REGISTRY:false}
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL:http://localhost:8761/eureka/}
