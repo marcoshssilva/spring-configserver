@@ -22,10 +22,10 @@ spring:
           # list of sub-folders from git project
           search-paths: ${SPRING_CLOUD_CONFIG_SERVER_SEARCH_PATHS:config-server*}
 server:
-  port: ${PORT:8080}
+  port: ${PORT:8888}
 management:
   server:
-    port: ${MANAGEMENT_PORT:8080}
+    port: ${MANAGEMENT_PORT:8888}
   info:
     env.enabled: true
     java.enabled: true
