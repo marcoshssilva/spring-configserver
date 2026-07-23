@@ -8,9 +8,9 @@
 		<version>4.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.marcoshssilva</groupId>
+	<groupId>com.github.marcoshssilva</groupId>
 	<artifactId>spring-configserver</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>0.1.0-RC-SNAPSHOT</version>
 	<name>spring-configserver</name>
 	<description>Spring Cloud Config Server is a centralized service for managing external configuration in distributed systems. It allows applications to fetch their configuration properties from a central source (such as Git, SVN, or a local file system) at runtime. This makes it easier to maintain consistency across environments, update settings without redeploying applications, and securely manage sensitive data like credentials. It’s often used in microservices architectures to keep configuration externalized, version-controlled, and easily changeable.</description>
 	<url/>
@@ -81,14 +81,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-				</configuration>
+				<configuration></configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-				</configuration>
+				<configuration></configuration>
 			</plugin>
 		</plugins>
 	</build>
