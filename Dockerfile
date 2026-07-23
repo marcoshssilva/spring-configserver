@@ -1,28 +1,30 @@
-FROM eclipse-temurin:24-jre-alpine-3.21 AS base-runner
-FROM base-runner AS runner
+FROM eclipse-temurin:25-jre AS java
 
 USER root
+
 WORKDIR /app
-COPY --chmod=644 ./target/spring-configserver-*.jar app.jar
+COPY --chmod=644 --chown=root:root ./target/spring-configserver-*.jar app.jar
 
 USER 1001
 
+ARG OTEL_SERVICE_NAME
+ARG OTEL_SERVICE_NAMESPACE
 ARG JAVA_VM_OPTIONS
 ARG PORT
 ARG MANAGEMENT_PORT
+ARG SPRING_PROFILES_ACTIVE
 
-ENV PATH="/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-ENV JAVA_HOME="/opt/java/openjdk"
-ENV JAVA_VM_OPTIONS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=80"
+ENV OTEL_SERVICE_NAME="spring-admin"
+ENV OTEL_SERVICE_NAMESPACE="app"
+ENV JAVA_VM_OPTIONS="-XX:MaxRAMPercentage=80.0 -Dfile.encoding=UTF-8"
 ENV PORT="8080"
-ENV MANAGEMENT_PORT="8080"
+ENV MANAGEMENT_PORT="8081"
+ENV SPRING_PROFILES_ACTIVE="container"
+
 
 ENTRYPOINT ["sh", "-c"]
 CMD ["exec java $JAVA_VM_OPTIONS -jar /app/app.jar"]
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
-  CMD sh -c "wget --no-verbose --tries=1 --spider http://localhost:$MANAGEMENT_PORT/actuator/health || exit 1"
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 CMD sh -c "wget --no-verbose --tries=1 --spider http://localhost:$MANAGEMENT_PORT/actuator/health || exit 1"
 
-EXPOSE 8080
-
-LABEL authors="Marcos Henrique de Santana"
+EXPOSE 8080 8081
