@@ -1,6 +1,8 @@
 spring:
   application:
     name: ${APP_NAME:spring-configserver}
+  profiles:
+    default: ${SPRING_PROFILES_ACTIVE:opentelemetry}
   cloud:
     active: default # use profile native if you want to use custom properties at classpath
     config:
@@ -53,11 +55,11 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 30
     health-check-url-path: /actuator/health
-    preferIpAddress: ${EUREKA_INSTANCE_PREFER_IP_ADDRESS:false}
+    preferIpAddress: ${EUREKA_INSTANCE_PREFER_IP_ADDRESS:true}
   client:
-    enabled: ${EUREKA_CLIENT_ENABLED:false}
+    enabled: ${EUREKA_CLIENT_ENABLED:true}
     registryFetchIntervalSeconds: ${EUREKA_CLIENT_FETCH_REGISTRY_INTERVAL_SECONDS:30}
-    register-with-eureka: ${EUREKA_CLIENT_REGISTER_WITH_EUREKA:false}
+    register-with-eureka: ${EUREKA_CLIENT_REGISTER_WITH_EUREKA:true}
     fetch-registry: ${EUREKA_CLIENT_FETCH_REGISTRY:false}
     serviceUrl:
-      defaultZone: ${EUREKA_CLIENT_SERVICE_URL:http://localhost:8761/eureka/}
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL:http://admin:admin@localhost:8761/eureka/}
